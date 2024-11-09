@@ -6,18 +6,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.List;
 
 @Entity @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class People {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String peopleId;
-//    @Column(name="Cat")
     private TypeUser peopleCategory;
     private String email;
     private String password;
+    private String telephone;
     @OneToMany(mappedBy = "client")
-    private List<Booking> booking;
+    private List<Booking> bookings;
 
 }

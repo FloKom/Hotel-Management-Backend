@@ -6,10 +6,13 @@ import lombok.*;
 import java.util.List;
 
 @Entity @Data  @AllArgsConstructor @NoArgsConstructor
-public class Accomodation {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String hotelServiceId;
-    private String serviceName;
+public class Accommodation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int accommodationId;
+    private String accommodationName;
+    private String description;
     @ManyToMany
     private List<Booking> bookings;
+    private float price;
 }

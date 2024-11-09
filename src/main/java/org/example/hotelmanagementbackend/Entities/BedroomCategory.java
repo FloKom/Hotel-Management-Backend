@@ -1,11 +1,12 @@
 package org.example.hotelmanagementbackend.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,5 +16,10 @@ import lombok.Setter;
 
 public class BedroomCategory {
     @Id
-    private int BedroomCategoryId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int bedroomCategoryId;
+    private String bedroomCategoryName;
+    private String description;
+    @OneToMany(mappedBy = "category")
+    private List<Bedroom> bedrooms;
 }
