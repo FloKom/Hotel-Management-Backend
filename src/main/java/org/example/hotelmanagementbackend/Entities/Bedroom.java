@@ -1,21 +1,23 @@
 package org.example.hotelmanagementbackend.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+import java.util.List;
+
+@Entity @Data @AllArgsConstructor @NoArgsConstructor
 public class Bedroom {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bedroomId;
     private RoomStatus status;
-    private String url;
+    private String urlPhoto;
     private String standing;
+    private String description;
+    private String bedroomName;
+    private float price;
+    @OneToMany(mappedBy = "bedroom")
+    private List<Booking> bookings;
+    @ManyToOne
+    private BedroomCategory category;
 }

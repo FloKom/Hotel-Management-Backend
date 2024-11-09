@@ -7,9 +7,12 @@ import java.util.List;
 
 @Entity @Data  @AllArgsConstructor @NoArgsConstructor
 public class Accomodation {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String hotelServiceId;
     private String serviceName;
+    private String description;
     @ManyToMany
     private List<Booking> bookings;
+    private float price;
 }

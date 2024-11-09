@@ -12,12 +12,13 @@ import java.util.List;
 @Entity @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class People {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String peopleId;
-//    @Column(name="Cat")
     private TypeUser peopleCategory;
     private String email;
     private String password;
+    private String telephone;
     @OneToMany(mappedBy = "client")
-    private List<Booking> booking;
+    private List<Booking> bookings;
 
 }
