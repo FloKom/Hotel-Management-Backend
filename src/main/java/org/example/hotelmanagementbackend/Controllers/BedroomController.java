@@ -38,4 +38,9 @@ public class BedroomController {
         return bedroomService.updateBedroom(bedroomDTO);
     }
 
+    @GetMapping("/category/{id}")
+    public List<BedroomDTO> getBedroomByCategory(@PathVariable int id){
+        return bedroomService.getAllBedroomsByCategory(id);
+    }
+
 }

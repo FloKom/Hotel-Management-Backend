@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +15,7 @@ public class BookingDTO {
     private Date startDate;
     private Date endDate;
     private Boolean status;
+    private String peopleId;
+    private int bedroomId;
+    private List<Integer> accommodationIds;
 }

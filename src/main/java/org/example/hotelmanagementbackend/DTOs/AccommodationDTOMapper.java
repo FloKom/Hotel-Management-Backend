@@ -17,6 +17,6 @@ public class AccommodationDTOMapper {
     }
 
     public static List<AccommodationDTO> apply(List<Accommodation> accommodations) {
-        return accommodations.stream().map(AccommodationDTOMapper::apply).collect(Collectors.toList());
+        return accommodations.stream().map(AccommodationDTOMapper::apply).toList();
     }
 }

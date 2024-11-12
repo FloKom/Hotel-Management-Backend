@@ -11,7 +11,8 @@ public class Bedroom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bedroomId;
     private RoomStatus status;
-    private String urlPhoto;
+    @OneToMany(mappedBy = "bedroom")
+    private List<Image> images;
     private String standing;
     private String description;
     private String bedroomName;

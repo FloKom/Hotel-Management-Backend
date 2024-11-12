@@ -14,9 +14,10 @@ public class BedroomDTOMapper {
         bedroomDTO.setPrice(bedroom.getPrice());
         bedroomDTO.setBedroomName(bedroom.getBedroomName());
         bedroomDTO.setStatus(bedroom.getStatus());
-        bedroomDTO.setUrlPhoto(bedroom.getUrlPhoto());
+//        bedroomDTO.setUrlPhoto(bedroom.getUrlPhoto());
         bedroomDTO.setStatus(bedroom.getStatus());
         bedroomDTO.setStanding(bedroom.getStanding());
+        bedroomDTO.setBedroomCategoryId(bedroom.getCategory().getBedroomCategoryId());
         return bedroomDTO;
     }
 

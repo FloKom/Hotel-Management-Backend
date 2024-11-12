@@ -15,5 +15,6 @@ public class BedroomDTO {
     private String standing;
     private String description;
     private String bedroomName;
+    private int bedroomCategoryId;
     private float price;
 }
