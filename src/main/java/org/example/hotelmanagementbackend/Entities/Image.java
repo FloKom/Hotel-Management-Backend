@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor
 public class Image {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int imageId;
-    private String imageUrl;
+    private String imageId;
     @ManyToOne @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Bedroom bedroom;
 }

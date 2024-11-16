@@ -8,8 +8,9 @@ import org.example.hotelmanagementbackend.Exceptions.ApiRequestException;
 import org.example.hotelmanagementbackend.Repositories.BookingRepository;
 import org.example.hotelmanagementbackend.Repositories.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,13 +21,13 @@ public class PeopleService {
     private PeopleRepository peopleRepository;
     @Autowired
     private BookingRepository bookingRepository;
-//    private PasswordEncoder passwordEncoder =
-//            PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    private final PasswordEncoder passwordEncoder =
+            new BCryptPasswordEncoder();
 
     public PeopleOutDTO addPeople(PeopleInDTO peopleInDTO) {
         People people = new People();
         people.setEmail(peopleInDTO.getEmail());
-        people.setPassword(peopleInDTO.getPassword());
+        people.setPassword(passwordEncoder.encode(peopleInDTO.getPassword()));
         people.setTelephone(peopleInDTO.getTelephone());
         people.setPeopleCategory(peopleInDTO.getPeopleCategory());
         return PeopleDTOMapper.apply(peopleRepository.save(people));
@@ -58,6 +59,16 @@ public class PeopleService {
         bookingRepository.deleteAll(people.getBookings());
         peopleRepository.delete(people);
         return id;
+    }
+
+    public PeopleOutDTO login(PeopleInDTO peopleInDTO){
+        People people = peopleRepository.findById(peopleInDTO.getPeopleId())
+                .orElseThrow(() -> new ApiRequestException("People not found"));
+        if(passwordEncoder.matches(peopleInDTO.getPassword(), people.getPassword())){
+            return PeopleDTOMapper.apply(people);
+        } else {
+            return null;
+        }
     }
 
 }

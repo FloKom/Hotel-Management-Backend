@@ -3,7 +3,6 @@ package org.example.hotelmanagementbackend.Services;
 import jakarta.transaction.Transactional;
 import org.example.hotelmanagementbackend.DTOs.BedroomDTO;
 import org.example.hotelmanagementbackend.DTOs.BedroomDTOMapper;
-import org.example.hotelmanagementbackend.Entities.Accommodation;
 import org.example.hotelmanagementbackend.Entities.Bedroom;
 import org.example.hotelmanagementbackend.Entities.BedroomCategory;
 import org.example.hotelmanagementbackend.Exceptions.ApiRequestException;
@@ -28,7 +27,7 @@ public class BedroomService {
     public BedroomDTO addBedroom(BedroomDTO bedroomDTO) {
         Bedroom bedroom = new Bedroom();
         BedroomCategory category = bedroomCategoryRepository.findById(bedroomDTO.getBedroomCategoryId())
-                    .orElseThrow(() -> new ApiRequestException("Cannot find Person with id: " + bedroomDTO.getBedroomId()));;
+                    .orElseThrow(() -> new ApiRequestException("Cannot find Person with id: " + bedroomDTO.getBedroomId()));
         bedroom.setBedroomName(bedroomDTO.getBedroomName());
         bedroom.setPrice(bedroomDTO.getPrice());
         bedroom.setDescription(bedroomDTO.getDescription());

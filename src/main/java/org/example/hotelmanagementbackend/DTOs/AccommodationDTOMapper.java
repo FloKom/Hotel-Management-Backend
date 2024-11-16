@@ -3,7 +3,7 @@ package org.example.hotelmanagementbackend.DTOs;
 import org.example.hotelmanagementbackend.Entities.Accommodation;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class AccommodationDTOMapper {
     public static AccommodationDTO apply(Accommodation accommodation) {

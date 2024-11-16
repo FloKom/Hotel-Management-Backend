@@ -22,11 +22,12 @@ public class ImageService {
     private BedroomRepository bedroomRepository;
     @Autowired
     private ImageRepository imageRepository;
+    private String directory = "src/main/resources/static/images/ads";
     // Save image in a local directory
-    public Image saveImageToStorage(String uploadDirectory, MultipartFile imageFile, int bedroomId){
-        String uniqueFileName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
+    public Image saveImageToStorage(MultipartFile imageFile, int bedroomId){
+        String uniqueFileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
 
-        Path uploadPath = Path.of(uploadDirectory);
+        Path uploadPath = Path.of(directory);
         Path filePath = uploadPath.resolve(uniqueFileName);
         try {
             if (!Files.exists(uploadPath)) {
@@ -39,14 +40,14 @@ public class ImageService {
         Bedroom bedroom = bedroomRepository.findById(bedroomId)
                 .orElseThrow(() -> new ApiRequestException("Cannot find Person with id: " + bedroomId));
         Image image = new Image();
-        image.setImageUrl(uniqueFileName);
+        image.setImageId(uniqueFileName);
         image.setBedroom(bedroom);
         return imageRepository.save(image);
     }
 
     // To view an image
-    public byte[] getImage(String imageDirectory, String imageName) throws IOException {
-        Path imagePath = Path.of(imageDirectory, imageName);
+    public byte[] getImage(String imageName) throws IOException {
+        Path imagePath = Path.of(directory, imageName);
 
         if (Files.exists(imagePath)) {
             return Files.readAllBytes(imagePath);

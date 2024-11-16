@@ -35,7 +35,7 @@ public class BedroomCategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBedroomCategory(@PathVariable int bedroomCategoryId) {
-        bedroomCategoryService.deleteBedroomCategory(bedroomCategoryId);
+    public void deleteBedroomCategory(@PathVariable int id) {
+        bedroomCategoryService.deleteBedroomCategory(id);
     }
 }

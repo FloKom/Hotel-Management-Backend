@@ -2,20 +2,14 @@ package org.example.hotelmanagementbackend.Services;
 
 import org.example.hotelmanagementbackend.DTOs.BookingDTO;
 import org.example.hotelmanagementbackend.DTOs.BookingDTOMapper;
-import org.example.hotelmanagementbackend.DTOs.PeopleDTOMapper;
 import org.example.hotelmanagementbackend.Entities.*;
 import org.example.hotelmanagementbackend.Exceptions.ApiRequestException;
 import org.example.hotelmanagementbackend.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class BookingService {

@@ -1,6 +1,7 @@
 package org.example.hotelmanagementbackend.DTOs;
 
 import org.example.hotelmanagementbackend.Entities.Bedroom;
+import org.example.hotelmanagementbackend.Entities.Image;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +16,9 @@ public class BedroomDTOMapper {
         bedroomDTO.setBedroomName(bedroom.getBedroomName());
         bedroomDTO.setStatus(bedroom.getStatus());
 //        bedroomDTO.setUrlPhoto(bedroom.getUrlPhoto());
+        if(bedroom.getImages() != null) {
+            bedroomDTO.setImageIds(bedroom.getImages().stream().map(Image::getImageId).toList());
+        }
         bedroomDTO.setStatus(bedroom.getStatus());
         bedroomDTO.setStanding(bedroom.getStanding());
         bedroomDTO.setBedroomCategoryId(bedroom.getCategory().getBedroomCategoryId());

@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.hotelmanagementbackend.Entities.RoomStatus;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BedroomDTO {
     private int bedroomId;
     private RoomStatus status;
-    private String urlPhoto;
+    private List<String> imageIds;
     private String standing;
     private String description;
     private String bedroomName;

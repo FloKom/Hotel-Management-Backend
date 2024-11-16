@@ -22,10 +22,9 @@ public class ImageController {
 
     @PostMapping("/{bedroomId}")
     public List<Image> addImage(@RequestParam("images")  MultipartFile[] adsImages, @PathVariable int bedroomId) {
-        String uploadDirectory = "src/main/resources/static/images/ads";
         List<Image> images = new ArrayList<>();
         for (MultipartFile imageFile : adsImages) {
-            images.add(imageService.saveImageToStorage(uploadDirectory, imageFile, bedroomId));
+            images.add(imageService.saveImageToStorage(imageFile, bedroomId));
         }
         return images;
     }
@@ -40,6 +39,6 @@ public class ImageController {
         }
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
-                .body(imageService.getImage(uploadDirectory, id));
+                .body(imageService.getImage(id));
     }
 }
