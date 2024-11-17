@@ -79,7 +79,7 @@ public class SpringSecurityConfig {
                         .deleteCookies("JSESSIONID") // Remove session cookie
                         .logoutSuccessHandler((request, response, authentication) -> {
                             response.setStatus(HttpServletResponse.SC_OK);
-                            response.getWriter().write("Logout successful");
+//                            response.getWriter().write("Logout successful");
                         }));
         return http.build();
     }
