@@ -1,4 +1,4 @@
-FROM maven:3.3-jdk-8 AS build
+FROM maven:3.9 AS build
 RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY pom.xml /workspace
