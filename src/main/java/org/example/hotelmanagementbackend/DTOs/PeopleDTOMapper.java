@@ -11,6 +11,7 @@ public class PeopleDTOMapper {
         PeopleOutDTO peopleDTO = new PeopleOutDTO();
         peopleDTO.setPeopleId(people.getPeopleId());
         peopleDTO.setEmail(people.getEmail());
+        peopleDTO.setUsername(people.getUsername());
         peopleDTO.setTelephone(people.getTelephone());
         peopleDTO.setPeopleCategory(people.getPeopleCategory());
         return peopleDTO;

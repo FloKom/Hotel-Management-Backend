@@ -10,6 +10,7 @@ public class PeopleInDTO {
     private String peopleId;
     private String email;
     private String password;
+    private String username;
     private String telephone;
     private TypeUser peopleCategory;
 }

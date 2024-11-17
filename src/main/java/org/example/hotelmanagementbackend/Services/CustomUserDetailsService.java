@@ -2,6 +2,7 @@ package org.example.hotelmanagementbackend.Services;
 
 import org.example.hotelmanagementbackend.Entities.People;
 import org.example.hotelmanagementbackend.Repositories.PeopleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
+    @Autowired
     private PeopleRepository peopleRepository;
 
     @Override

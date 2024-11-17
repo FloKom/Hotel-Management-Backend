@@ -61,14 +61,9 @@ public class PeopleService {
         return id;
     }
 
-    public PeopleOutDTO login(PeopleInDTO peopleInDTO){
-        People people = peopleRepository.findById(peopleInDTO.getPeopleId())
-                .orElseThrow(() -> new ApiRequestException("People not found"));
-        if(passwordEncoder.matches(peopleInDTO.getPassword(), people.getPassword())){
-            return PeopleDTOMapper.apply(people);
-        } else {
-            return null;
-        }
+    public PeopleOutDTO findUserByEmail(PeopleInDTO peopleInDTO){
+        People people = peopleRepository.findPeopleByEmail(peopleInDTO.getEmail());
+        return PeopleDTOMapper.apply(people);
     }
 
 }

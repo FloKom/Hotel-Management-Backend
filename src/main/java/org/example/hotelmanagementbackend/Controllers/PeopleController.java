@@ -1,9 +1,14 @@
 package org.example.hotelmanagementbackend.Controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.example.hotelmanagementbackend.DTOs.PeopleInDTO;
 import org.example.hotelmanagementbackend.DTOs.PeopleOutDTO;
 import org.example.hotelmanagementbackend.Services.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -52,16 +57,20 @@ public class PeopleController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody PeopleInDTO people){
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(people.getEmail(), people.getPassword())
-        );
+    public ResponseEntity<?> login(@RequestBody PeopleInDTO people, HttpServletResponse response, HttpServletRequest request){
 
-        if (authentication.isAuthenticated()) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(people.getEmail(), people.getPassword())
+            );
+
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            return "User authenticated successfully!";
+            HttpSession session = request.getSession(true); // Create a new session if none exists
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            return ResponseEntity.ok(peopleService.findUserByEmail(people));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed!");
         }
-        return "Authentication failed!";
     }
 
     @GetMapping("/hello")

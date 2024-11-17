@@ -20,6 +20,7 @@ public class People {
     private String email;
     private String password;
     private String telephone;
+    private String username;
     @OneToMany(mappedBy = "client")
     private List<Booking> bookings;
 

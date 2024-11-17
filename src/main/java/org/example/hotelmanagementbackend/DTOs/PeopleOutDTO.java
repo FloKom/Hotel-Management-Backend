@@ -10,5 +10,6 @@ public class PeopleOutDTO {
     private String peopleId;
     private TypeUser peopleCategory;
     private String email;
+    private String username;
     private String telephone;
 }
