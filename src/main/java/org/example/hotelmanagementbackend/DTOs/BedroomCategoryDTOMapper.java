@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class BedroomCategoryDTOMapper {
     public static BedroomCategoryDTO apply(BedroomCategory bedroomCategory) {
         BedroomCategoryDTO bedroomCategoryDTO = new BedroomCategoryDTO();
-
         bedroomCategoryDTO.setBedroomCategoryId(bedroomCategory.getBedroomCategoryId());
+        bedroomCategoryDTO.setBedroomCategoryName(bedroomCategory.getBedroomCategoryName());
         bedroomCategoryDTO.setDescription(bedroomCategory.getDescription());
         bedroomCategoryDTO.setBedroomCategoryName(bedroomCategory.getBedroomCategoryName());
         return bedroomCategoryDTO;

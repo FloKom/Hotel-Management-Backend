@@ -21,7 +21,7 @@ public class BedroomDTOMapper {
         }
         bedroomDTO.setStatus(bedroom.getStatus());
         bedroomDTO.setStanding(bedroom.getStanding());
-        bedroomDTO.setBedroomCategoryId(bedroom.getCategory().getBedroomCategoryId());
+        bedroomDTO.setBedroomCategoryName(bedroom.getCategory().getBedroomCategoryName());
         return bedroomDTO;
     }
 
